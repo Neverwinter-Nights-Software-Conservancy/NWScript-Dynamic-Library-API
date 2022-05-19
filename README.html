@@ -1,0 +1,547 @@
+<HTML>
+<HEAD>
+<TITLE>NWScript Dynamic Library API v1.0</TITLE>
+</HEAD>
+<BODY>
+
+<H1>NWScript Dynamic Library API v1.0</H1>
+<P>
+Author: <A HREF="mailto:darkpope@hotmail.com">Fran&ccedil;ois Guimond</A>
+        a.k.a. Eyrdan<BR>
+Homepage: <A HREF="http://darkpope.tripod.com/dynlib/">http://darkpope.tripod.com/dynlib/</A>
+
+<H2>Description</H2>
+<P>
+This bundle includes the core dynamic library API as well as dynamic library versions of
+the following <EM>BioWare</EM> files:
+<UL>
+  <LI>nw_i0_assoc.nss
+  <LI>nw_i0_generic.nss
+  <LI>nw_i0_henchman.nss
+  <LI>nw_i0_plot.nss
+  <LI>nw_i0_plotwizard.nss
+  <LI>nw_i0_spells.nss
+  <LI>nw_i0_tool.nss
+  <LI>nw_o2_coninclude.nss
+</UL>
+<P>
+The difference between normal <EM>BioWare</EM> libraries and dynamic libraries is that
+dynamic libraries do not need to get compiled into each and every script that uses them,
+greatly reducing the size of modules, as well as making upgrading of the libraries more
+modular.
+
+<H2>Bundle Contents</H2>
+<P>
+The following files are included in this bundle:
+<PRE>
+erf/dynlib.erf                  NWScript Dynamic Library API v1.0 (ERF format)
+hak/dynlib.hak                  NWScript Dynamic Library API v1.0 (HAK format)
+
+override/_nw_i0_assoc.nss       BioWare's static nw_i0_assoc.nss file      (v1.27)
+override/_nw_i0_generic.nss     BioWare's static nw_i0_generic.nss file    (v1.27)
+override/_nw_i0_henchman.nss    BioWare's static nw_i0_henchman.nss file   (v1.27)
+override/_nw_i0_plot.nss        BioWare's static nw_i0_plot.nss file       (v1.27)
+override/_nw_i0_plotwizar.nss   BioWare's static nw_i0_plotwizard.nss file (v1.27)
+override/_nw_i0_spells.nss      BioWare's static nw_i0_spells.nss file     (v1.27)
+override/_nw_i0_tool.nss        BioWare's static nw_i0_tool.nss file       (v1.27)
+override/_nw_o2_coninclud.nss   BioWare's static nw_o2_coninclude.nss file (v1.27)
+
+override/_nw_i0_assoc_sym.nss   nw_i0_assoc.nss symbol table
+override/_nw_i0_gener_sym.nss   nw_i0_generic.nss symbol table
+override/_nw_i0_henc_sym.nss    nw_i0_henchman.nss symbol table
+override/_nw_i0_plot_sym.nss    nw_i0_plot.nss symbol table
+override/_nw_i0_plotw_sym.nss   nw_i0_plotwizard.nss symbol table
+override/_nw_i0_spell_sym.nss   nw_i0_spells.nss symbol table
+override/_nw_i0_tool_sym.nss    nw_i0_tool.nss symbol table
+override/_nw_o2_conin_sym.nss   nw_o2_coninclude.nss symbol table
+
+override/dl_i0_core.nss         NWScript Dynamic Library API v1.0 Core
+
+override/dl_i0_assoc.ncs        Dynamic Associate Library v1.0
+override/dl_i0_generic.ncs      Dynamic Generic Library v1.0
+override/dl_i0_henchman.ncs     Dynamic Henchman Library v1.0
+override/dl_i0_plot.ncs         Dynamic Plot Library v1.0
+override/dl_i0_plotwizard.ncs   Dynamic Plot Wizard Library v1.0
+override/dl_i0_spells.ncs       Dynamic Spells Library v1.0
+override/dl_i0_tool.ncs         Dynamic Tool Library v1.0
+override/dl_o2_coninclude.ncs   Dynamic Treasure Library v1.0
+
+override/dl_i0_assoc.nss        Dynamic Associate Library v1.0   (source)
+override/dl_i0_generic.nss      Dynamic Generic Library v1.0     (source)
+override/dl_i0_henchman.nss     Dynamic Henchman Library v1.0    (source)
+override/dl_i0_plot.nss         Dynamic Plot Library v1.0        (source)
+override/dl_i0_plotwizard.nss   Dynamic Plot Wizard Library v1.0 (source)
+override/dl_i0_spells.nss       Dynamic Spells Library v1.0      (source)
+override/dl_i0_tool.nss         Dynamic Tool Library v1.0        (source)
+override/dl_o2_coninclude.nss   Dynamic Treasure Library v1.0    (source)
+
+override/nw_i0_assoc.nss        Dynamic Associate Library v1.0   (interface)
+override/nw_i0_generic.nss      Dynamic Generic Library v1.0     (interface)
+override/nw_i0_henchman.nss     Dynamic Henchman Library v1.0    (interface)
+override/nw_i0_plot.nss         Dynamic Plot Library v1.0        (interface)
+override/nw_i0_plotwizard.nss   Dynamic Plot Wizard Library v1.0 (interface)
+override/nw_i0_spells.nss       Dynamic Spells Library v1.0      (interface)
+override/nw_i0_tool.nss         Dynamic Tool Library v1.0        (interface)
+override/nw_o2_coninclude.nss   Dynamic Treasure Library v1.0    (interface)
+
+README.html                     This file.
+</PRE>
+
+<H2>Installation</H2>
+<P>
+This bundle includes three (3) methods of installing the <EM>NWScript Dynamic Library
+API</EM>.
+<UL>
+  <LI><B>ERF:</B> An <EM>ERF</EM> file including all of the source and compiled versions
+      of the bundle is included to be imported into any module. Please note that several
+      files within the bundle will produce compile errors when building a module, and
+      these should be ignored.
+  <LI><B>HAK:</B> The <EM>HAK</EM> version might be the prefered method of installation by
+      most people. This way, only the necessary files will be used by your module, and no
+      compilation errors will be produced by attempting to compile the files included in
+      the bundle (which are already compiled). Simply put <CODE>dynlib.hak</CODE> into
+      your <CODE>hak/</CODE> directory and select it from the advanced properties of your
+      module in the toolset. Using this method, you do not need to re-distribute the
+      <EM>HAK</EM> file along with your module, users can simply download it from my
+      website.
+  <LI><B>Override:</B> You could simply copy all the files from <CODE>override/</CODE> of
+      this bundle to your local override directory. However, this will force the API on to
+      ALL modules opened in the toolset, as well as overwrite some <EM>BioWare</EM> files.
+      <B><I>Do it at your own risk</I></B>.
+</UL>
+<P>
+If you downloaded a module which indicated that this API was required in order to execute
+it, simply use the <EM>HAK</EM> file method.
+
+<H2>Usage Notes</H2>
+<P>
+When building a module for the first time after installing the API, you might experience
+some compilation errors for any files including the libraries listed above which are
+overridden by this bundle. Simply open your scripts and add the following line before any
+<CODE>#include</CODE> directive in the file:
+<PRE>
+    #include "dl_i0_core"
+</PRE>
+<P>
+Once you are done adding this line to any problematic file, simply rebuild your module,
+and you should experience no more of these errors. However, if you installed the
+<EM>ERF</EM> format, remember that the following compile errors are normal and should be
+ignored:
+<PRE>
+_nw_i0_assoc.nss - Compile Error
+nw_i0_assoc.nss - Compile Error
+nw_i0_generic.nss - Compile Error
+nw_i0_henchman.nss - Compile Error
+nw_i0_plot.nss - Compile Error
+nw_i0_plotwizard.nss - Compile Error
+nw_i0_spells.nss - Compile Error
+nw_i0_tool.nss - Compile Error
+nw_o2_coninclude.nss - Compile Error
+</PRE>
+
+<HR>
+<P>
+<FONT SIZE=+2>
+The following sections includes the technical motivation as well as implementation notes
+of this API. You do not need to read this unless you are interested in the background of
+this add-on or want to implement your own dynamic libraries.
+</FONT>
+<P>
+<HR>
+
+<H2>Motivation</H2>
+<P>
+First, I do not claim to have invented dynamic libraries. The idea of dynamic linking has
+been around for a very long time. If you don't know what dynamic libraries are, well, they
+are modular pieces of code installed once and re-used by multiple applications in order to
+share functionality without having to rewrite it every single time. Ever noticed all those
+<CODE>.dll</CODE> files in <EM>Windows</EM> applications? Or those <CODE>.so</CODE> files
+in <EM>Linux</EM>? Well, those are dynamic libraries. As you can see, they are very common
+in modern software, not simply invented by the <EM>NWN</EM> fan, of which you may question
+the credentials, that is writing this document. ;)
+<P>
+Most programmers know the difference between static linking and dynamic libraries,
+however, most scripters using <EM>NWN</EM> don't. Let me describe the current situation
+and hint to why I decided to look into implementing this API, this will help
+non-programmers understand the advantages to using such an architecture.
+<P>
+When you put an <CODE>#include</CODE> directive inside your scripts, what you are actually
+telling the compiler to do is, in simple terms, "<I>paste the content of that file in here
+before you compile this</I>". What this means is that if you include a file in order to
+reuse ONE of its functions, you're probably compiling in far more than you had hoped for
+and your compiled scripts will become significantly larger. This should not pose a
+performance issue, but it does dramatically increase the build time inside the
+<EM>Aurora</EM> toolset. This is what we call static linking in programming. The term
+'static', as in 'fixed', is used because if you make any change to the files you included,
+you have to recompile everything that included it so that its inclusion of that code gets
+updated. This, of course, is another drawback of static linking.
+<P>
+As a low-level programmer, one that often works with operating system source code, this
+was unacceptable to me when I started making a module (<B><I>Birds of Prey</I></B>, still
+in development) as I often modify files that include large libraries, or those libraries
+themselves, and it took extremely long to build, even if I had only made a small change.
+The fact that the <EM>BioWare</EM> compiler used static linking was very apparent in that
+aspect, so I wondered if there was any way to achieve dynamic linking functionality.
+<P>
+What does dynamic linking do to fix this problem? Well, when you call a function from an
+included file, what is actually compiled into your file is the reference to that function,
+not the function itself or the entire library it is part of. This means you don't even
+need a copy of that library to compile, it can be supplied separately, and that if you
+change the code in that library (although keeping the same function names), you do not
+need to recompile every script that uses it. This means smaller files, faster building,
+and easier maintenance. Also, to those who are critical about intellectual property, you
+do not have to supply the source file of your library, just the compiled version. You can
+see in the <EM>HAK</EM> format provided with this bundle that no source of the dynamic
+libraries is supplied, just the compiled file and an interface file.
+<P>
+How does this affect you?
+<P>
+Well, if you have ever done any AI customization, you know that the
+<CODE>nw_c2_default9.nss</CODE> is the first key component to the <EM>BioWare</EM>
+creature AI. You probably often modify this file to make variants, for example one with
+ambient animations turned on, another with some user events activated, and so on. You
+looked at this file before, so you know it's not that big. However, if you ever stopped to
+look at the result, you'll notice the original version, as well as any variants you make
+of it, EACH take 150 kilobytes compiled in your module, while they only took 5 kilobytes
+as source code. Now lets say you had 10 variants, which means 10 different types of AI
+behaviors in your module, which I consider is probably a lot less than most modules, you'd
+have yourself a module already 1.5 megabytes big.
+<P>
+Did this grab your attention? Hang on, there's more.
+<P>
+The reason for this increase is that the <CODE>nw_i0_generic.nss</CODE> and
+<CODE>nw_o2_coninclude.nss</CODE> libraries are included in this script. The first one,
+while being large, is not the main culprit, but the second one, if you ever opened it, is
+a large series of <CODE>switch-case</CODE> statements with long tables of item resource
+names, that all get included in your script. So basically, that one last line in the
+<CODE>nw_c2_default9.nss</CODE> file, the call to <CODE>GenerateNPCTreasure()</CODE>, just
+increased the size of your compiled file by a factor of about 18 to 19 times. Based on
+this last number, if you had 10 variants as stated above, and moved to a dynamic version
+instead (which takes 8 kilobytes per compiled file), your module would just have shrunk
+from 1.5 megabytes to 80 kilobytes. Of course, code does not appear out of nowhere, so the
+actual libraries also need to be included once, which add about 230 kilobytes to the final
+product, although they can be shipped separately and reused by other modules, so this is
+only a one-time investment in size and, hopefully, if this catches on, will become quite
+common and most users will already have a copy.
+<P>
+In this example, I'm only mentioning one file, but you most probably have other files
+using functions from these libraries that are also getting rather large when it could be
+avoided. This procedure could also be applied to fan-made libraries, and for example make
+the famous <EM>HCR</EM> scripts a lot smaller.
+<P>
+<B>NOTE:</B> When I say "library", in the <EM>NWScript</EM> context, this means a
+non-compilable script file that has no <CODE>void main()</CODE> or
+<CODE>int StartingConditional()</CODE> function, that is only useable from an
+<CODE>#include</CODE> directive (such as the common <CODE>nw_i0_generic.nss</CODE> file).
+
+<H2>Implementation</H2>
+<P>
+<B>***WARNING***:</B> I get very technical in this part, so only read on if you're serious
+about it. ;) You have been warned.
+<P>
+There are a few common points often found in implementations of dynamic libraries on most
+platforms. Personally, I just wrote my API as a quick fix. Although it seems very
+efficient to me, perhaps it can be improved even more. I don't claim to be perfect, I only
+picked one approach to solving the problem out of many possibilities.
+<P>
+In the C programming language, you need the compiled library itself (<CODE>.dll</CODE>,
+<CODE>.so</CODE>, ...), and a header file (<CODE>.h</CODE>) that has all the function
+names, constants, structures, etc., needed in order to use that library in other
+applications. For the remainder of this document, I'll refer to this header file as the
+library's "interface", because that's simply what it does, provide an interface to it. The
+remainder of the work is typically done by the compiler suite, but in our case, the
+<EM>NWScript</EM> compiler only offers static linking so we can't count on it and have to
+do the rest ourselves. I'm looking into perhaps writing a small application that will
+convert libraries automatically, but I make no promises.
+<P>
+When compiling, still in C, external function calls are stored as <EM>symbols</EM> in the
+<CODE>.o</CODE> files. It is only during the final step, the linking, that these symbols
+get traced back to their respectful libraries in order to either include the code
+statically or reference it dynamically. We already know that the static approach means
+including a copy of the library code in your final product, so I'll just stick to the
+dynamic approach here.
+<P>
+An application that was compiled using dynamic libraries will usually keep symbol
+references to the functions it uses, as well as reference to the library itself. This way,
+when the application gets executed, the operating system can look in it for a list of all
+the dynamic libraries it needs to load, and it uses the symbols to determine what function
+inside that library is called. How this works, in <EM>simple</EM> terms, is that the
+caller (the application) puts the arguments necessary for the function call in an area in
+memory that the library is expecting (can vary per implementation), then looks up where
+that function is in the dynamic library, and passes control to that area in its code,
+which places the final result somewhere in memory that the caller is expecting, so that
+when it is done, the caller can retrieve the result. Where and how data is stored in
+memory to share between the application and the library can vary a lot, and in my case, I
+picked stacks, which is a very common approach, and the <CODE>OBJECT_SELF</CODE> object as
+the location (since that's the only thing common in the caller and the library).
+<P>
+I won't explain how stacks work, you probably already know. Here's how they are used in
+this context.
+<P>
+In the first step of this procedure, the arguments of the function get pushed onto the
+stacks. I use the plural here, as to implement this I needed a different stack for each
+basic data type (<CODE>int</CODE>, <CODE>float</CODE>, <CODE>string</CODE>,
+<CODE>object</CODE> and <CODE>location</CODE>) that is storable in a local variable on an
+object. You probably already see a limitation here ("<I>What about action, effect, event,
+struct, talent and vector?</I>"), but I will discuss it later, for now, lets concentrate
+on storable data types.
+<P>
+These are now stored on the object (<CODE>OBJECT_SELF</CODE>), using a basic set of
+functions I have written to provide access to these stacks of data. Now, the next step is
+calling the library. The key function in <EM>NWScript</EM> that makes all of this possible
+is <CODE>ExecuteScript</CODE>. As you probably guess, the script name given corresponds to
+the library, and the object is <CODE>OBJECT_SELF</CODE>. But this would simply call the
+<CODE>void main()</CODE> function in that script. So we need a way of telling it which
+function we want. This is where <EM>symbols</EM> come back into use. Each function in that
+library would be assigned one (I used <CODE>int</CODE> constants for my implementation)
+that can be used to tell the script what we want. Sure, you could use about anything here,
+but the <CODE>int</CODE> has one advantage, it can be used in a <CODE>switch-case</CODE>
+statement, which is a lot more efficient than a lot of <CODE>if</CODE>'s. Now where do we
+put this symbol? Same place we put the arguments, on the stacks, so when entering a
+dynamic library using my API, the library knows the value on top of the <CODE>int</CODE>
+stack is always the symbol of the function to call. Now we're set, so we call
+<CODE>ExecuteScript</CODE>.
+<P>
+On the reciever end, you have a script which included the library we wanted (using
+<CODE>#include</CODE>), and has a main function that is merely a large
+<CODE>switch-case</CODE> statement. It first pops the symbol, and then in the switch,
+jumps to the appropriate function call. What each <CODE>case</CODE> does, is pop the
+argument values from the stacks, call the function from the included library, and push the
+result back on a stack. This script, once compiled, will be the equivalent to the
+<CODE>.dll</CODE> or <CODE>.so</CODE> mentioned above, as it will contain the code of all
+of the functions from the included library, and if you noticed, will be the only file with
+the compiled code of that library (as the caller scripts only need to call
+<CODE>ExecuteScript</CODE>).
+<P>
+When <CODE>ExecuteScript</CODE> returns to the caller, the caller just needs to pop the
+expected return value from the stacks, and voila, the dynamic call is done.
+<P>
+Now you could expect your users to do all of this manually, if you're very sadistic, but
+most likely you'd like them to be able to use your library without any knowledge of how
+dynamic libraries work, so that to them it's only an <CODE>#include</CODE> directive that
+they are already familiar to. So what is the final step in setting this up? You write a
+script that has all the same function names as the library you want to link dynamically,
+and the content of each function is the dynamic procedure I just explained. You'll most
+likely want to also include the header comments of each function too, as they will be used
+in the bottom help window inside the script editor. This file will be the one the users
+will include, not the original library. So if you want to make sure they don't confuse
+them, rename the original to something else, and save this version using the original
+name. This file you just created was the last missing piece of the puzzle: the interface
+to the library.
+<P>
+Personally, I also make the symbol values into their own file, which makes it easier to
+manage, but that's not necessary.
+
+<H2>Example</H2>
+<P>
+Ok, now that I have explained the procedure, let me go with an example and some code
+snippets.
+<P>
+First, we need a stack implementation. Lets for now consider that only the
+<CODE>int</CODE> data type exists, for the other types, you'll most likely want to look at
+my source files.
+<P>
+A stack needs a pop and push operation, so here are my implementations:
+<PRE>
+    int PopInt()
+    {
+        int index = GetLocalInt(OBJECT_SELF, "DL_INTSTACK") - 1;
+        string sVarName = "DL_INTSTACK_" + IntToString(index);
+        int i = GetLocalInt(OBJECT_SELF, sVarName);
+        DeleteLocalInt(OBJECT_SELF, sVarName);
+        SetLocalInt(OBJECT_SELF, "DL_INTSTACK", index);
+        return i;
+    }
+
+    void PushInt(int i)
+    {
+        int index = GetLocalInt(OBJECT_SELF, "DL_INTSTACK");
+        SetLocalInt(OBJECT_SELF, "DL_INTSTACK_" + IntToString(index), i);
+        SetLocalInt(OBJECT_SELF, "DL_INTSTACK", index + 1);
+    }
+</PRE>
+<P>
+These are fairly straight forward. Yes, I am aware that if you pop an empty stack with
+these you might get unexpected behavior, but since you're the one doing the pushing and
+popping, hopefully you'll be careful enough to always mirror your number of pops with your
+number of pushes.
+<P>
+You could each time you call a function write out the push of the symbol,
+<CODE>ExecuteScript</CODE>, and pop of the return value, but that gets tiring rather fast,
+so first I have a function for simply calling a function with a <CODE>void</CODE> return
+type, and one that re-uses for <CODE>int</CODE> return type.
+<PRE>
+    void DynCommand(string s, int i)
+    {
+        PushInt(i);
+        ExecuteScript(s, OBJECT_SELF);
+    }
+
+    int DynInt(string s, int i)
+    {
+        DynCommand(s, i);
+        return PopInt();
+    }
+</PRE>
+<P>
+If you have read everything up to here, you know what these are doing. The <EM>s</EM>
+argument is the library <EM>symbol</EM> (in our case, the script's <CODE>ResRef</CODE>),
+and the <EM>i</EM> argument is the function's <CODE>int</CODE> <EM>symbol</EM>, which will
+need to be unique for each function in that library. So, calling <CODE>DynInt</CODE>
+pushes the function symbol on the stack, calls the script, then pops the return value and,
+well, returns it.
+<P>
+That's it for the core of the architecture. This is actually the entire API (well, for
+<CODE>int</CODE> at least), and in this bundle included as <CODE>dl_i0_core.nss</CODE>.
+<P>
+Now we need a library to convert to dynamic. So lets say originally you had a file you
+used often, <CODE>mylib.nss</CODE>, which had a function called <CODE>int myfunc(int a,
+int b, int c)</CODE>, like the following:
+<PRE>
+    int myfunc(int a, int b, int c)
+    {
+        return (a * b) + c;
+    }
+</PRE>
+<P>
+This isn't a very useful library, with only one function, but it'll be enough for our
+example. For this scenario, lets say you often put <CODE>#include "mylib"</CODE> in your
+scripts and use <CODE>myfunc</CODE> very frequently.
+<P>
+First thing to do is to save your original library to a new name. Lets call it
+<CODE>_mylib.nss</CODE>. Then you need to write out the symbol table for it. Like I said
+earlier, you don't NEED to do this, you could just write the values manually from the
+caller, but it's easier for larger libraries to do this. So, I'd make a file called
+<CODE>_mylib_sym.nss</CODE>, that would contain the following:
+<PRE>
+    // library symbol
+    string SYM_MYLIB = "dl_mylib";
+
+    // int myfunc(int a, int b, int c);
+    int SYM_MYFUNC = 0;
+</PRE>
+<P>
+If you had more functions, you just add more like the last part, but make sure you always
+use a different <CODE>int</CODE> value for each function, they need to be unique.
+<P>
+Now to finalize the actual library, write a file called <CODE>dl_mylib.nss</CODE>, and in
+it put the following code:
+<PRE>
+    #include "dl_i0_core"
+    #include "_mylib"
+
+    void main()
+    {
+
+        switch (PopInt())
+        {
+
+            // int myfunc(int a, int b, int c);
+            case 0: PushInt(myfunc(PopInt(), PopInt(), PopInt())); break;
+
+        }
+    }
+</PRE>
+<P>
+And compile that file. The resulting <CODE>dl_mylib.ncs</CODE> file is the only thing you
+need to ship with your module (easy way is to put it in an <EM>HAK</EM> file), you don't
+even need to put the source code <CODE>_mylib.nss</CODE> of the library with it.
+<P>
+Now we need to write the interface. Your source code got saved as <CODE>_mylib.nss</CODE>,
+but you still have the old <CODE>mylib.nss</CODE> file in there, so open that one up
+(which is the one scripts will now include). Strip the content of your <CODE>myfunc</CODE>
+function, and replace it like this:
+<PRE>
+    #include "_mylib_sym"
+
+    int myfunc(int a, int b, int c)
+    {
+
+        PushInt(a); PushInt(b); PushInt(c);
+        return DynInt(SYM_MYLIB, SYM_MYFUNC);
+
+    }
+</PRE>
+<P>
+And now save it. Most likely, the compiler will complain about <CODE>PushInt</CODE>, etc.
+There are issues with including <CODE>dl_i0_core.nss</CODE> in this file, I'll explain
+later why. So ignore that error for now.
+<P>
+Now you have your interface file. You could try to build your module, but now all the
+files that included <CODE>mylib.nss</CODE> will give the <CODE>PushInt</CODE> missing
+error. So you got two alternatives, either you edit each of them to include
+<CODE>dl_i0_core.nss</CODE>, or you include it inside <CODE>mylib.nss</CODE>.
+<P>
+Most people will say I'll just edit that one file, but right now there is a limitation in
+<EM>NWScript</EM>, at least to my knowledge, that might make undesirable. In C, you can
+use <CODE>#ifdef</CODE> directives to only include files once, but I do not know of this
+equivalent in <EM>NWScript</EM>. So if you use several dynamic libraries, and each of them
+included the core API, when you include more than one inside a script, it won't compile as
+it sees multiple definitions of the core dynamic library functions (the pushes, pops, and
+dyns). This is why adding the include to each file that included the original might be
+preferable. Really, it's up to you, personally that's the way I went. You could in theory
+also use unique names for those functions inside each of your dynamic libraries to solve
+the problem, but this might become rather heavy, as well as a whole lot harder to debug if
+you messed up one of those versions. So I guess this issue is one of the limitations to
+this version of the dynamic library API that makes it not fully transparent to the user.
+<P>
+So to sum it up, we now have the following files:
+<PRE>
+* dl_i0_core.nss - NWScript Dynamic Library API
+  _mylib.nss     - Your original static library
+* _mylib_sym.nss - The symbol table (optional)
+  dl_mylib.nss   - The dynamic version of the library
+* dl_mylib.ncs   - The compiled dynamic library
+* mylib.nss      - The interface to the dynamic library
+</PRE>
+<P>
+You can either ship out all of these, or only the ones marked with a <B>*</B>. I don't
+think you can put a script without its source file in a module, so you'll have to use a
+<EM>HAK</EM> file if you want only the compiled code available to users (or use the
+override dir).
+
+<H2>Non-Storable Data Types</H2>
+<P>
+Before I close this off, let me address the issue of the non-storable data types.
+<UL>
+  <LI><B>action</B>
+      <UL><LI>Actions cannot be returned or passed as an argument to user functions. They
+      are only passed to <EM>NWScript</EM> core functions, so will never arise in dynamic
+      libraries.</UL>
+  <LI><B>effect</B>
+      <UL><LI>This is a tricky one. Effects are a complex data type. First I thought I
+      could try to get all of its fields and then replicate it, but then before I thought
+      any further I asked myself "<I>what about linked effects?</I>"...  and since I
+      couldn't come up with any answer for this one, I just dropped the idea and figured
+      I'd put it as a limitation until either <EM>BioWare</EM> provides
+      <CODE>SetLocalEffect</CODE> and <CODE>GetLocalEffect</CODE> functions, or someone
+      more sneaky than I comes up with a good way of replicating them. Notice in my
+      conversion of the <CODE>nw_i0_spells.nss</CODE> library, I kept all functions using
+      this data type in its static form.</UL>
+  <LI><B>event</B>
+      <UL><LI>Also a tricky one. Although pretty much any event could be replicated if you
+      knew the type of the original, the problem is that you can't get the type of the
+      event strictly from the event variable (as far as I know). No,
+      <CODE>GetUserDefinedEventNumber</CODE> does NOT do this, it merely returns the
+      number of the user event number that is currently <EM>active</EM>. We're talking
+      here about a variable, which may not have even been used with
+      <CODE>SignalEvent</CODE> yet. So still a limitation too.</UL>
+  <LI><B>struct</B>
+      <UL><LI>Complex to solve, but doable. Structs are just a bunch of other variables
+      together, so just push and pop the fields of the struct one by one. Only tricky part
+      is that you must pop in reverse order that you pushed (it's a stack, so it's LIFO
+      access). There is such an example in my conversion of the
+      <CODE>nw_io_generic.nss</CODE> library in this bundle.</UL>
+  <LI><B>talent</B>
+      <UL><LI>Talents can be replicated easily by two <CODE>int</CODE>'s. One is the
+      category, the other is the index in that category. No need to worry about these, I
+      already provided the <CODE>PushTalent</CODE>, <CODE>PopTalent</CODE>, and
+      <CODE>DynTalent</CODE> functions in <CODE>dl_i0_core.nss</CODE>.</UL>
+  <LI><B>vector</B>
+      <UL><LI>Vectors are just three <CODE>float</CODE>'s grouped together, so like
+      talents, they can be replicated in a giffy. Functions for these are already provided
+      too, so don't break a sweat over it.</UL>
+</UL>
+
+</BODY>
+</HTML>
